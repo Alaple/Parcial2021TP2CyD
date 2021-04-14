@@ -3,7 +3,20 @@
 // si la longitud del array es < 3 se debe retornar undefined
 
 const greater3 = nums => {
-    
+    if(nums.length<=3){
+        return undefined
+    }else{
+        // Primero ordeno el array de mayor a menor
+        const x = nums.sort((a, b) => a < b ? 1 : a > b ? -1 : 0);
+
+        // Elimino aquellos que estan repetidos
+        const result = x.filter(function(item, pos) {
+            return x.indexOf(item) == pos;
+        })
+
+        // Con el resultado yo estoy seguro que el que esta en el indice 2 va a ser el tercero mas grande
+        return result[2]
+    }
 }
 
 

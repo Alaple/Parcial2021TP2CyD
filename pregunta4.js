@@ -21,12 +21,21 @@
    * @param {*} discoveries 
    * @param {*} inventors 
    */
-  function addDiscoveries(inventor, discoveries, inventors){
-      
+  function addDiscoveries(inventor, discoveries, inentors){
+      const i = inventors.map(x=>{return x.last}).indexOf(inventor);
+      inventors[i].descubrimientos = discoveries;
+      console.log("Descubirmiento cargado",inventors[i].descubrimientos)
+      console.log("------------------------------------------------------------------------------------")
+      return inventors
   }
 
   console.log(addDiscoveries('Einstein', 
   ['Teoría de la relatividad especial','Equivalencia entre masa y energía','Teoría de la relatividad general'], inventors
   ));
+
+  console.log(addDiscoveries('Planck', 
+  ['1','2','3'], inventors
+  ));
+  
 
   
