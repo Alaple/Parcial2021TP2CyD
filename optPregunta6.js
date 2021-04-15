@@ -34,6 +34,7 @@
     const bodyParser = require('body-parser')
     const json = require('./data/users.json')
     const app = express()
+    app.use(express.json());
      
     app.get('/api/users/list', function (req, res) {
       res.send(json)
@@ -44,12 +45,11 @@
     })
 
     app.post('/api/users/add', function (req, res) {
-        let newJSon = {
+        const newJson = {
           ...json,
-          ...req.body
+          10:req.body
         }
-
-        res.send(newJSon);
+        res.send(newJson);
     })
      
     app.listen(3000)
