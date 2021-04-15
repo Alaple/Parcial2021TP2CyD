@@ -20,3 +20,14 @@ const beers = [
     { name: 'Stolen Fruit', abv: 4.6, label: 'https://s3.amazonaws.com/brewerydbapi/beer/YGT30k/upload_uVCHP7-large.png', type: 'Wheat' },
 ];
 
+function updateUrl(array){
+  array.map(element => {
+    element.label=element.label.replace('https://s3.amazonaws.com/brewerydbapi','https://tecnoshare.sharepoint.com/site');
+    let elementToReplace = element.label.split("/")[6]
+    let elementForReplace = element.name.replace(" ","_").replace(" ","_").toLowerCase()+'.png'
+    element.label = element.label.replace(elementToReplace,elementForReplace)
+  });
+  return array;
+}
+
+console.log(updateUrl(beers))
