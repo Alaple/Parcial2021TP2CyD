@@ -29,3 +29,27 @@
     }
  *
  */
+
+    const express = require('express')
+    const bodyParser = require('body-parser')
+    const json = require('./data/users.json')
+    const app = express()
+     
+    app.get('/api/users/list', function (req, res) {
+      res.send(json)
+    })
+
+    app.get('/api/users/:id', function (req, res) {
+      json.map(x=>{if(x.id==req.params.id)return res.send(x)})
+    })
+
+    app.post('/api/users/add', function (req, res) {
+        let newJSon = {
+          ...json,
+          ...req.body
+        }
+
+        res.send(newJSon);
+    })
+     
+    app.listen(3000)
